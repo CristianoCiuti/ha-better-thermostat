@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "ha-better-thermostat"
+version = "0.1.0"
+description = "Custom Home Assistant component for template-based climate entities with UI configuration"
+requires-python = ">=3.13"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]

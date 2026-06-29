@@ -1,0 +1,12 @@
+{
+  "domain": "better_thermostat",
+  "name": "Better Thermostat",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/anomalyco/ha-better-thermostat",
+  "integration_type": "helper",
+  "iot_class": "calculated",
+  "requirements": [],
+  "version": "0.1.0"
+}

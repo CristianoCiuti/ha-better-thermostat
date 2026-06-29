@@ -1,0 +1,126 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configurazione Base",
+        "description": "Imposta il nome e le modalit\u00e0 HVAC del termostato.",
+        "data": {
+          "name": "Nome",
+          "unique_id": "ID univoco (lasciare vuoto per generarlo automaticamente)",
+          "modes": "Modalit\u00e0 HVAC",
+          "min_temp": "Temperatura minima",
+          "max_temp": "Temperatura massima",
+          "temp_step": "Incremento temperatura"
+        }
+      },
+      "temperature": {
+        "title": "Temperatura e HVAC",
+        "description": "Inserisci i template e le azioni per temperatura e modalit\u00e0 HVAC.",
+        "data": {
+          "current_temperature_template": "Template temperatura corrente",
+          "target_temperature_template": "Template temperatura target",
+          "target_temperature_high_template": "Template temperatura target alta (heat_cool)",
+          "target_temperature_low_template": "Template temperatura target bassa (heat_cool)",
+          "hvac_mode_template": "Template modalit\u00e0 HVAC",
+          "hvac_action_template": "Template azione HVAC",
+          "set_temperature": "Azione impostazione temperatura (YAML)",
+          "set_hvac_mode": "Azione impostazione modalit\u00e0 HVAC (YAML)"
+        }
+      },
+      "features": {
+        "title": "Funzionalit\u00e0 Aggiuntive",
+        "description": "Seleziona le funzionalit\u00e0 opzionali da configurare.",
+        "data": {
+          "enable_preset": "Abilita modalit\u00e0 preimpostate (preset)",
+          "enable_fan": "Abilita modalit\u00e0 ventola",
+          "enable_swing": "Abilita modalit\u00e0 oscillazione",
+          "enable_humidity": "Abilita umidit\u00e0",
+          "enable_advanced": "Abilita impostazioni avanzate"
+        }
+      },
+      "optional": {
+        "title": "Configurazione Funzionalit\u00e0",
+        "description": "Inserisci template e azioni per le funzionalit\u00e0 selezionate.",
+        "data": {
+          "preset_mode_template": "Template modalit\u00e0 preimpostata",
+          "preset_modes": "Modalit\u00e0 preimpostate (separate da virgola)",
+          "set_preset_mode": "Azione impostazione preset (YAML)",
+          "fan_mode_template": "Template modalit\u00e0 ventola",
+          "fan_modes": "Modalit\u00e0 ventola (separate da virgola)",
+          "set_fan_mode": "Azione impostazione ventola (YAML)",
+          "swing_mode_template": "Template modalit\u00e0 oscillazione",
+          "swing_modes": "Modalit\u00e0 oscillazione (separate da virgola)",
+          "set_swing_mode": "Azione impostazione oscillazione (YAML)",
+          "current_humidity_template": "Template umidit\u00e0 corrente",
+          "target_humidity_template": "Template umidit\u00e0 target",
+          "min_humidity_template": "Template umidit\u00e0 minima",
+          "max_humidity_template": "Template umidit\u00e0 massima",
+          "set_humidity": "Azione impostazione umidit\u00e0 (YAML)"
+        }
+      },
+      "advanced": {
+        "title": "Impostazioni Avanzate",
+        "description": "Configura opzioni avanzate.",
+        "data": {
+          "min_temp_template": "Template temperatura minima",
+          "max_temp_template": "Template temperatura massima",
+          "availability_template": "Template disponibilit\u00e0",
+          "icon_template": "Template icona",
+          "precision": "Precisione",
+          "variables": "Variabili template (YAML)"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "title": "Modifica Configurazione Base",
+        "data": {
+          "name": "Nome",
+          "modes": "Modalit\u00e0 HVAC",
+          "min_temp": "Temperatura minima",
+          "max_temp": "Temperatura massima",
+          "temp_step": "Incremento temperatura"
+        }
+      },
+      "temperature": {
+        "title": "Modifica Temperatura e HVAC",
+        "data": {
+          "current_temperature_template": "Template temperatura corrente",
+          "target_temperature_template": "Template temperatura target",
+          "target_temperature_high_template": "Template temperatura target alta",
+          "target_temperature_low_template": "Template temperatura target bassa",
+          "hvac_mode_template": "Template modalit\u00e0 HVAC",
+          "hvac_action_template": "Template azione HVAC",
+          "set_temperature": "Azione impostazione temperatura (YAML)",
+          "set_hvac_mode": "Azione impostazione modalit\u00e0 HVAC (YAML)"
+        }
+      },
+      "features": {
+        "title": "Modifica Funzionalit\u00e0",
+        "data": {
+          "preset_mode_template": "Template preset",
+          "preset_modes": "Modalit\u00e0 preset (separate da virgola)",
+          "set_preset_mode": "Azione preset (YAML)",
+          "fan_mode_template": "Template ventola",
+          "fan_modes": "Modalit\u00e0 ventola (separate da virgola)",
+          "set_fan_mode": "Azione ventola (YAML)",
+          "swing_mode_template": "Template oscillazione",
+          "swing_modes": "Modalit\u00e0 oscillazione (separate da virgola)",
+          "set_swing_mode": "Azione oscillazione (YAML)",
+          "target_humidity_template": "Template umidit\u00e0 target",
+          "current_humidity_template": "Template umidit\u00e0 corrente",
+          "min_humidity_template": "Template umidit\u00e0 minima",
+          "max_humidity_template": "Template umidit\u00e0 massima",
+          "set_humidity": "Azione umidit\u00e0 (YAML)",
+          "min_temp_template": "Template temperatura minima",
+          "max_temp_template": "Template temperatura massima",
+          "availability_template": "Template disponibilit\u00e0",
+          "icon_template": "Template icona",
+          "variables": "Variabili template (YAML)"
+        }
+      }
+    }
+  }
+}
