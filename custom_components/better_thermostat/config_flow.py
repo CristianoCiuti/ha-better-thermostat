@@ -10,6 +10,10 @@ import yaml
 from homeassistant import config_entries
 from homeassistant.core import callback
 from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers.selector import (
+    TextSelector,
+    TextSelectorConfig,
+)
 
 from .const import (
     CONF_AVAILABILITY_TEMPLATE,
@@ -109,14 +113,14 @@ class BetterThermostatConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="temperature",
             data_schema=vol.Schema(
                 {
-                    vol.Optional(CONF_CURRENT_TEMP_TEMPLATE): str,
-                    vol.Optional(CONF_TARGET_TEMP_TEMPLATE): str,
-                    vol.Optional(CONF_TARGET_TEMP_HIGH_TEMPLATE): str,
-                    vol.Optional(CONF_TARGET_TEMP_LOW_TEMPLATE): str,
-                    vol.Optional(CONF_HVAC_MODE_TEMPLATE): str,
-                    vol.Optional(CONF_HVAC_ACTION_TEMPLATE): str,
-                    vol.Optional(CONF_SET_TEMP_ACTION): str,
-                    vol.Optional(CONF_SET_HVAC_MODE_ACTION): str,
+                    vol.Optional(CONF_CURRENT_TEMP_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_TARGET_TEMP_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_TARGET_TEMP_HIGH_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_TARGET_TEMP_LOW_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_HVAC_MODE_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_HVAC_ACTION_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_SET_TEMP_ACTION): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_SET_HVAC_MODE_ACTION): TextSelector(TextSelectorConfig(multiline=True)),
                 }
             ),
             errors=errors,
@@ -168,35 +172,35 @@ class BetterThermostatConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if getattr(self, "_show_preset", False):
             schema.update(
                 {
-                    vol.Optional(CONF_PRESET_MODE_TEMPLATE): str,
+                    vol.Optional(CONF_PRESET_MODE_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_PRESET_MODES, default=[]): str,
-                    vol.Optional(CONF_SET_PRESET_MODE_ACTION): str,
+                    vol.Optional(CONF_SET_PRESET_MODE_ACTION): TextSelector(TextSelectorConfig(multiline=True)),
                 }
             )
         if getattr(self, "_show_fan", False):
             schema.update(
                 {
-                    vol.Optional(CONF_FAN_MODE_TEMPLATE): str,
+                    vol.Optional(CONF_FAN_MODE_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_FAN_MODES, default=[]): str,
-                    vol.Optional(CONF_SET_FAN_MODE_ACTION): str,
+                    vol.Optional(CONF_SET_FAN_MODE_ACTION): TextSelector(TextSelectorConfig(multiline=True)),
                 }
             )
         if getattr(self, "_show_swing", False):
             schema.update(
                 {
-                    vol.Optional(CONF_SWING_MODE_TEMPLATE): str,
+                    vol.Optional(CONF_SWING_MODE_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_SWING_MODES, default=[]): str,
-                    vol.Optional(CONF_SET_SWING_MODE_ACTION): str,
+                    vol.Optional(CONF_SET_SWING_MODE_ACTION): TextSelector(TextSelectorConfig(multiline=True)),
                 }
             )
         if getattr(self, "_show_humidity", False):
             schema.update(
                 {
-                    vol.Optional(CONF_CURRENT_HUMIDITY_TEMPLATE): str,
-                    vol.Optional(CONF_TARGET_HUMIDITY_TEMPLATE): str,
-                    vol.Optional(CONF_MIN_HUMIDITY_TEMPLATE): str,
-                    vol.Optional(CONF_MAX_HUMIDITY_TEMPLATE): str,
-                    vol.Optional(CONF_SET_HUMIDITY_ACTION): str,
+                    vol.Optional(CONF_CURRENT_HUMIDITY_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_TARGET_HUMIDITY_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_MIN_HUMIDITY_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_MAX_HUMIDITY_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_SET_HUMIDITY_ACTION): TextSelector(TextSelectorConfig(multiline=True)),
                 }
             )
 
@@ -248,14 +252,14 @@ class BetterThermostatConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if getattr(self, "_show_advanced", False):
             schema.update(
                 {
-                    vol.Optional(CONF_MIN_TEMP_TEMPLATE): str,
-                    vol.Optional(CONF_MAX_TEMP_TEMPLATE): str,
-                    vol.Optional(CONF_AVAILABILITY_TEMPLATE): str,
-                    vol.Optional(CONF_ICON_TEMPLATE): str,
+                    vol.Optional(CONF_MIN_TEMP_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_MAX_TEMP_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_AVAILABILITY_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
+                    vol.Optional(CONF_ICON_TEMPLATE): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_PRECISION): vol.In(
                         {0.1: "0.1", 0.5: "0.5", 1.0: "1.0"}
                     ),
-                    vol.Optional(CONF_VARIABLES): str,
+                    vol.Optional(CONF_VARIABLES): TextSelector(TextSelectorConfig(multiline=True)),
                 }
             )
 
@@ -348,21 +352,21 @@ class BetterThermostatOptionsFlow(config_entries.OptionsFlow):
             data_schema=vol.Schema(
                 {
                     vol.Optional(CONF_CURRENT_TEMP_TEMPLATE,
-                                 default=data.get(CONF_CURRENT_TEMP_TEMPLATE, "")): str,
+                                 default=data.get(CONF_CURRENT_TEMP_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_TARGET_TEMP_TEMPLATE,
-                                 default=data.get(CONF_TARGET_TEMP_TEMPLATE, "")): str,
+                                 default=data.get(CONF_TARGET_TEMP_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_TARGET_TEMP_HIGH_TEMPLATE,
-                                 default=data.get(CONF_TARGET_TEMP_HIGH_TEMPLATE, "")): str,
+                                 default=data.get(CONF_TARGET_TEMP_HIGH_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_TARGET_TEMP_LOW_TEMPLATE,
-                                 default=data.get(CONF_TARGET_TEMP_LOW_TEMPLATE, "")): str,
+                                 default=data.get(CONF_TARGET_TEMP_LOW_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_HVAC_MODE_TEMPLATE,
-                                 default=data.get(CONF_HVAC_MODE_TEMPLATE, "")): str,
+                                 default=data.get(CONF_HVAC_MODE_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_HVAC_ACTION_TEMPLATE,
-                                 default=data.get(CONF_HVAC_ACTION_TEMPLATE, "")): str,
+                                 default=data.get(CONF_HVAC_ACTION_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_SET_TEMP_ACTION,
-                                 default=_stringify_yaml(data.get(CONF_SET_TEMP_ACTION))): str,
+                                 default=_stringify_yaml(data.get(CONF_SET_TEMP_ACTION))): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_SET_HVAC_MODE_ACTION,
-                                 default=_stringify_yaml(data.get(CONF_SET_HVAC_MODE_ACTION))): str,
+                                 default=_stringify_yaml(data.get(CONF_SET_HVAC_MODE_ACTION))): TextSelector(TextSelectorConfig(multiline=True)),
                 }
             ),
             errors=errors,
@@ -380,43 +384,43 @@ class BetterThermostatOptionsFlow(config_entries.OptionsFlow):
             data_schema=vol.Schema(
                 {
                     vol.Optional(CONF_PRESET_MODE_TEMPLATE,
-                                 default=data.get(CONF_PRESET_MODE_TEMPLATE, "")): str,
+                                 default=data.get(CONF_PRESET_MODE_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_PRESET_MODES,
                                  default=",".join(data.get(CONF_PRESET_MODES, []))): str,
                     vol.Optional(CONF_SET_PRESET_MODE_ACTION,
-                                 default=_stringify_yaml(data.get(CONF_SET_PRESET_MODE_ACTION))): str,
+                                 default=_stringify_yaml(data.get(CONF_SET_PRESET_MODE_ACTION))): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_FAN_MODE_TEMPLATE,
-                                 default=data.get(CONF_FAN_MODE_TEMPLATE, "")): str,
+                                 default=data.get(CONF_FAN_MODE_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_FAN_MODES,
                                  default=",".join(data.get(CONF_FAN_MODES, []))): str,
                     vol.Optional(CONF_SET_FAN_MODE_ACTION,
-                                 default=_stringify_yaml(data.get(CONF_SET_FAN_MODE_ACTION))): str,
+                                 default=_stringify_yaml(data.get(CONF_SET_FAN_MODE_ACTION))): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_SWING_MODE_TEMPLATE,
-                                 default=data.get(CONF_SWING_MODE_TEMPLATE, "")): str,
+                                 default=data.get(CONF_SWING_MODE_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_SWING_MODES,
                                  default=",".join(data.get(CONF_SWING_MODES, []))): str,
                     vol.Optional(CONF_SET_SWING_MODE_ACTION,
-                                 default=_stringify_yaml(data.get(CONF_SET_SWING_MODE_ACTION))): str,
+                                 default=_stringify_yaml(data.get(CONF_SET_SWING_MODE_ACTION))): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_TARGET_HUMIDITY_TEMPLATE,
-                                 default=data.get(CONF_TARGET_HUMIDITY_TEMPLATE, "")): str,
+                                 default=data.get(CONF_TARGET_HUMIDITY_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_CURRENT_HUMIDITY_TEMPLATE,
-                                 default=data.get(CONF_CURRENT_HUMIDITY_TEMPLATE, "")): str,
+                                 default=data.get(CONF_CURRENT_HUMIDITY_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_MIN_HUMIDITY_TEMPLATE,
-                                 default=data.get(CONF_MIN_HUMIDITY_TEMPLATE, "")): str,
+                                 default=data.get(CONF_MIN_HUMIDITY_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_MAX_HUMIDITY_TEMPLATE,
-                                 default=data.get(CONF_MAX_HUMIDITY_TEMPLATE, "")): str,
+                                 default=data.get(CONF_MAX_HUMIDITY_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_SET_HUMIDITY_ACTION,
-                                 default=_stringify_yaml(data.get(CONF_SET_HUMIDITY_ACTION))): str,
+                                 default=_stringify_yaml(data.get(CONF_SET_HUMIDITY_ACTION))): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_MIN_TEMP_TEMPLATE,
-                                 default=data.get(CONF_MIN_TEMP_TEMPLATE, "")): str,
+                                 default=data.get(CONF_MIN_TEMP_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_MAX_TEMP_TEMPLATE,
-                                 default=data.get(CONF_MAX_TEMP_TEMPLATE, "")): str,
+                                 default=data.get(CONF_MAX_TEMP_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_AVAILABILITY_TEMPLATE,
-                                 default=data.get(CONF_AVAILABILITY_TEMPLATE, "")): str,
+                                 default=data.get(CONF_AVAILABILITY_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_ICON_TEMPLATE,
-                                 default=data.get(CONF_ICON_TEMPLATE, "")): str,
+                                 default=data.get(CONF_ICON_TEMPLATE, "")): TextSelector(TextSelectorConfig(multiline=True)),
                     vol.Optional(CONF_VARIABLES,
-                                 default=_stringify_yaml(data.get(CONF_VARIABLES, {}))): str,
+                                 default=_stringify_yaml(data.get(CONF_VARIABLES, {}))): TextSelector(TextSelectorConfig(multiline=True)),
                 }
             ),
             errors=errors,
