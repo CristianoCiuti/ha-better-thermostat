@@ -16,6 +16,7 @@ from homeassistant.helpers.reload import (
 )
 from homeassistant.helpers.typing import ConfigType
 
+from . import climate  # noqa: F401 — preload to avoid blocking import_module in event loop
 from .const import (
     DOMAIN,
     PLATFORMS,
